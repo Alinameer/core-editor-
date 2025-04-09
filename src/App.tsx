@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { SerializedEditorState } from "lexical";
-import { Editor } from "./components/blocks/editor-x/editor";
+import { Editor } from "../dist/index";
 
 const initialValue = {
   root: {
@@ -40,7 +40,7 @@ export default function EditorDemo() {
     useState<SerializedEditorState>(initialValue);
 
   return (
-    <div className="h-screen w-screen bg-background">
+    <div>
       <Editor
         editorSerializedState={editorState}
         onSerializedChange={(value) => setEditorState(value)}

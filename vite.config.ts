@@ -1,14 +1,48 @@
-import path from "path";
-import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    dts({
+      include: ["src"],
+      outDir: "dist",
+    }),
+    libInjectCss(),
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": resolve(__dirname, "./src"),
+    },
+  },
+  css: {
+    modules: {
+      scopeBehaviour: "local",
+    },
+    preprocessorOptions: {
+      scss: {},
+    },
+  },
+  build: {
+    lib: {
+      entry: resolve(__dirname, "src/index.ts"),
+      formats: ["es"],
+    },
+    rollupOptions: {
+      external: ["react", "react/jsx-runtime"],
+      output: {
+        dir: "dist",
+        format: "es",
+        chunkFileNames: "[name]-[hash].js",
+        assetFileNames: "assets/[name][extname]",
+        entryFileNames: "[name].js",
+      },
     },
   },
 });
