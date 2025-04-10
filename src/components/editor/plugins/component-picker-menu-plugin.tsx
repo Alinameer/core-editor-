@@ -31,7 +31,6 @@ const LexicalTypeaheadMenuPlugin = dynamic(
   () => import("./default/lexical-typeahead-menu-plugin"),
   { ssr: false }
 );
-console.log(Command, CommandGroup, CommandItem, CommandList);
 export function ComponentPickerMenuPlugin({
   baseOptions = [],
   dynamicOptionsFn,
@@ -46,11 +45,9 @@ export function ComponentPickerMenuPlugin({
   const [editor] = useLexicalComposerContext();
   const [modal, showModal] = useEditorModal();
   const [queryString, setQueryString] = useState<string | null>(null);
-  console.log(setQueryString);
   const checkForTriggerMatch = useBasicTypeaheadTriggerMatch("/", {
     minLength: 0,
   });
-  console.log(checkForTriggerMatch);
   const options = useMemo(() => {
     if (!queryString) {
       return baseOptions;
@@ -67,7 +64,6 @@ export function ComponentPickerMenuPlugin({
       ),
     ];
   }, [editor, queryString, showModal]);
-  console.log(options);
   const onSelectOption = useCallback(
     (
       selectedOption: ComponentPickerOption,
@@ -83,7 +79,6 @@ export function ComponentPickerMenuPlugin({
     },
     [editor]
   );
-  console.log(onSelectOption);
   return (
     <>
       {modal}

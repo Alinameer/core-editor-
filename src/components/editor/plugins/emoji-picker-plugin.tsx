@@ -64,8 +64,6 @@ const MAX_EMOJI_SUGGESTION_COUNT = 10;
 export function EmojiPickerPlugin() {
   const [editor] = useLexicalComposerContext();
   const [queryString, setQueryString] = useState<string | null>(null);
-  console.log(setQueryString);
-  console.log(queryString);
   const [emojis, setEmojis] = useState<Array<Emoji>>([]);
   useEffect(() => {
     import("../utils/emoji-list").then((file) => setEmojis(file.default));
@@ -87,7 +85,6 @@ export function EmojiPickerPlugin() {
   const checkForTriggerMatch = useBasicTypeaheadTriggerMatch(":", {
     minLength: 0,
   });
-  console.log(checkForTriggerMatch);
   const options: Array<EmojiOption> = useMemo(() => {
     return emojiOptions
       .filter((option: EmojiOption) => {
@@ -102,7 +99,6 @@ export function EmojiPickerPlugin() {
       })
       .slice(0, MAX_EMOJI_SUGGESTION_COUNT);
   }, [emojiOptions, queryString]);
-  console.log(options);
   const onSelectOption = useCallback(
     (
       selectedOption: EmojiOption,
@@ -127,7 +123,6 @@ export function EmojiPickerPlugin() {
     },
     [editor]
   );
-  console.log(onSelectOption);
   return (
     // @ts-ignore
     <LexicalTypeaheadMenuPlugin<EmojiOption>
