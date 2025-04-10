@@ -263,12 +263,15 @@ export function AutoEmbedPlugin(): JSX.Element {
         embedConfigs={EmbedConfigs}
         onOpenEmbedModalForConfig={openEmbedModal}
         getMenuOptions={getMenuOptions}
+        //@ts-ignore
         menuRenderFn={(
           anchorElementRef,
           {
+            //@ts-ignore
             selectedIndex,
             options,
             selectOptionAndCleanUp,
+            //@ts-ignore
             setHighlightedIndex,
           }
         ) => {
@@ -285,6 +288,7 @@ export function AutoEmbedPlugin(): JSX.Element {
                     <Command>
                       <CommandList>
                         <CommandGroup>
+                          {/* @ts-ignore */}
                           {options.map((option, i: number) => (
                             <CommandItem
                               key={option.key}

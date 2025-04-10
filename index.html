@@ -26,5 +26,32 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      function handleEditorChange(state) {
+        console.log('Editor state changed:', state);
+      }
+      
+      function handleSerializedChange(state) {
+        console.log('Serialized state changed:', state);
+      }
+      
+      function handleHtmlChange(html) {
+        console.log('HTML changed:', html);
+      }
+      
+      window.addEventListener('DOMContentLoaded', () => {
+        const editor = document.querySelector('#editor');
+        editor.onChange = handleEditorChange;
+        editor.onSerializedChange = handleSerializedChange;
+        editor.onHtmlChange = handleHtmlChange;
+      });
+    </script>
+    
+    <react-editor 
+      id="editor"
+      editorState='null'
+      editorSerializedState='null'
+    ></react-editor>
   </body>
 </html>

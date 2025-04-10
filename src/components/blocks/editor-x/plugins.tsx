@@ -115,7 +115,6 @@ import { CodePickerPlugin } from "@/components/editor/plugins/picker/code-picker
 import { DividerPickerPlugin } from "@/components/editor/plugins/picker/divider-picker-plugin";
 import { PageBreakPickerPlugin } from "@/components/editor/plugins/picker/page-break-picker-plugin";
 import { ImagePickerPlugin } from "@/components/editor/plugins/picker/image-picker-plugin";
-import { ExcalidrawPickerPlugin } from "@/components/editor/plugins/picker/excalidraw-picker-plugin";
 import { PollPickerPlugin } from "@/components/editor/plugins/picker/poll-picker-plugin";
 import { EquationPickerPlugin } from "@/components/editor/plugins/picker/equation-picker-plugin";
 import { CollapsiblePickerPlugin } from "@/components/editor/plugins/picker/collapsible-picker-plugin";

@@ -17,6 +17,7 @@ import { TextNode } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useBasicTypeaheadTriggerMatch } from "@lexical/react/LexicalTypeaheadMenuPlugin";
 
+//@ts-ignore
 import {
   Command,
   CommandGroup,
@@ -44,10 +45,13 @@ export function ComponentPickerMenuPlugin({
 }): JSX.Element {
   const [editor] = useLexicalComposerContext();
   const [modal, showModal] = useEditorModal();
+  //@ts-ignore
   const [queryString, setQueryString] = useState<string | null>(null);
+  //@ts-ignore
   const checkForTriggerMatch = useBasicTypeaheadTriggerMatch("/", {
     minLength: 0,
   });
+  //@ts-ignore
   const options = useMemo(() => {
     if (!queryString) {
       return baseOptions;
@@ -64,6 +68,7 @@ export function ComponentPickerMenuPlugin({
       ),
     ];
   }, [editor, queryString, showModal]);
+  //@ts-ignore
   const onSelectOption = useCallback(
     (
       selectedOption: ComponentPickerOption,

@@ -6,6 +6,7 @@ import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { $generateHtmlFromNodes } from "@lexical/html";
 import { EditorState, SerializedEditorState } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import r2wc from "@r2wc/react-to-web-component";
 
 import { FloatingLinkContext } from "@/components/editor/context/floating-link-context";
 import { SharedAutocompleteContext } from "@/components/editor/context/shared-autocomplete-context";
@@ -24,7 +25,7 @@ const editorConfig: InitialConfigType = {
   },
 };
 
-export function Editor({
+function Editor({
   editorState,
   editorSerializedState,
   onChange,
@@ -82,3 +83,20 @@ function HtmlChangePlugin({ onChange }: { onChange: (html: string) => void }) {
 
   return null;
 }
+
+// Create web component from React component
+const EditorWebComponent = r2wc(Editor, {
+  props: {
+    editorState: "json",
+    editorSerializedState: "json",
+    onChange: "function",
+    onSerializedChange: "function",
+    onHtmlChange: "function",
+  },
+});
+
+// Register the web component
+customElements.define("react-editor", EditorWebComponent);
+
+// Export both the React component and the web component
+export { Editor, EditorWebComponent };
