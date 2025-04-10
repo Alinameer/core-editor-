@@ -38,12 +38,17 @@ const initialValue = {
 export default function EditorDemo() {
   const [editorState, setEditorState] =
     useState<SerializedEditorState>(initialValue);
+  const [htmlContent, setHtmlContent] = useState<string>("");
 
   return (
     <div>
       <Editor
         editorSerializedState={editorState}
         onSerializedChange={(value) => setEditorState(value)}
+        onHtmlChange={(html) => {
+          console.log("HTML Content:", html);
+          setHtmlContent(html);
+        }}
       />
     </div>
   );
