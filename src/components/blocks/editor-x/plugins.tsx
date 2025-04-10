@@ -35,7 +35,6 @@ import { BlockInsertPlugin } from "@/components/editor/plugins/toolbar/block-ins
 import { InsertCollapsibleContainer } from "@/components/editor/plugins/toolbar/block-insert/insert-collapsible-container";
 import { InsertColumnsLayout } from "@/components/editor/plugins/toolbar/block-insert/insert-columns-layout";
 import { InsertEmbeds } from "@/components/editor/plugins/toolbar/block-insert/insert-embeds";
-import { InsertExcalidraw } from "@/components/editor/plugins/toolbar/block-insert/insert-excalidraw";
 import { InsertHorizontalRule } from "@/components/editor/plugins/toolbar/block-insert/insert-horizontal-rule";
 import { InsertImage } from "@/components/editor/plugins/toolbar/block-insert/insert-image";
 import { InsertInlineImage } from "@/components/editor/plugins/toolbar/block-insert/insert-inline-image";
@@ -98,7 +97,6 @@ import { TableActionMenuPlugin } from "@/components/editor/plugins/table-action-
 import { TableCellResizerPlugin } from "@/components/editor/plugins/table-cell-resizer-plugin";
 import { TableHoverActionsPlugin } from "@/components/editor/plugins/table-hover-actions-plugin";
 import { ToolbarPlugin } from "@/components/editor/plugins/toolbar/toolbar-plugin";
-import { TypingPerfPlugin } from "@/components/editor/plugins/typing-pref-plugin";
 import { ContentEditable } from "@/components/editor/editor-ui/content-editable";
 
 import { AlignmentPickerPlugin } from "@/components/editor/plugins/picker/alignment-picker-plugin";
@@ -147,7 +145,7 @@ export function Plugins({}) {
     <div className="relative">
       <ToolbarPlugin>
         {({ blockType }) => (
-          <div className="vertical-align-middle sticky top-0 z-10 flex gap-2 overflow-auto border-b p-1">
+          <div className="flex w-full h-[42px] pr-2 p-[5px] gap-[2px]  items-center self-stretch border-b border-[var(--Border-Presentation-Global-Primary,#d4d4d4)] bg-[var(--Background-Presentation-Form-Header,rgba(255,255,255,0.2))] shadow-[0px_2px_9px_0px_var(--Background-Presentation-Form-Header-Shadow,rgba(0,0,0,0.1))] backdrop-blur-[8px] rounded-[4px]">
             <HistoryToolbarPlugin />
             <Separator orientation="vertical" className="h-8" />
             <BlockFormatDropDown>
@@ -170,11 +168,10 @@ export function Plugins({}) {
                 <FontFormatToolbarPlugin format="italic" />
                 <FontFormatToolbarPlugin format="underline" />
                 <FontFormatToolbarPlugin format="strikethrough" />
+                <ClearFormattingToolbarPlugin />
                 <Separator orientation="vertical" className="h-8" />
                 <SubSuperToolbarPlugin />
                 <LinkToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
-                <ClearFormattingToolbarPlugin />
                 <Separator orientation="vertical" className="h-8" />
                 <FontColorToolbarPlugin />
                 <FontBackgroundToolbarPlugin />
@@ -187,7 +184,6 @@ export function Plugins({}) {
                   <InsertImage />
                   <InsertInlineImage />
                   <InsertCollapsibleContainer />
-                  <InsertExcalidraw />
                   <InsertTable />
                   <InsertPoll />
                   <InsertColumnsLayout />
@@ -206,7 +202,7 @@ export function Plugins({}) {
               <div className="" ref={onRef}>
                 <ContentEditable
                   placeholder={placeholder}
-                  className="ContentEditable__root relative block min-h-72 overflow-auto min-h-full px-8 py-4 focus:outline-none h-[830px]"
+                  className="ContentEditable__root relative block  overflow-auto min-h-full px-8 py-4 focus:outline-none h-[830px]"
                 />
               </div>
             </div>
@@ -284,7 +280,6 @@ export function Plugins({}) {
             CodePickerPlugin(),
             DividerPickerPlugin(),
             PageBreakPickerPlugin(),
-            ExcalidrawPickerPlugin(),
             PollPickerPlugin(),
             EmbedsPickerPlugin({ embed: "figma" }),
             EmbedsPickerPlugin({ embed: "tweet" }),

@@ -5,6 +5,8 @@ import { useState } from "react";
 import { SerializedEditorState } from "lexical";
 import { Editor } from "./components/blocks/editor-x/editor";
 
+import { Button } from "../components/Button";
+
 const initialValue = {
   root: {
     children: [
@@ -62,6 +64,11 @@ export default function EditorDemo() {
             className="max-w-none prose prose-slate"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
+        </div>
+        <div className="mt-8">
+          <Button variant="PrimeStyle" size="M">
+            test
+          </Button>
         </div>
       </div>
     </div>

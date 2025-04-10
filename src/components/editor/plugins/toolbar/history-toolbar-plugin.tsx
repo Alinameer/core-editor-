@@ -9,9 +9,8 @@ import {
   REDO_COMMAND,
   UNDO_COMMAND,
 } from "lexical";
-import { RedoIcon, UndoIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../../components/Button";
 
 import { useToolbarContext } from "@/components/editor/context/toolbar-context";
 
@@ -63,11 +62,11 @@ export function HistoryToolbarPlugin() {
         title={IS_APPLE ? "Undo (⌘Z)" : "Undo (Ctrl+Z)"}
         type="button"
         aria-label="Undo"
-        size="sm"
+        size={"M"}
         className="h-8 w-8"
-        variant={"outline"}
+        variant={"BlueContStyle"}
       >
-        <UndoIcon className="size-4" />
+        <i className="ri-arrow-go-back-line"></i>
       </Button>
       <Button
         disabled={!canRedo || !isEditable}
@@ -77,11 +76,11 @@ export function HistoryToolbarPlugin() {
         title={IS_APPLE ? "Redo (⇧⌘Z)" : "Redo (Ctrl+Y)"}
         type="button"
         aria-label="Redo"
-        size="sm"
+        size={"M"}
         className="h-8 w-8"
-        variant={"outline"}
+        variant={"BlueContStyle"}
       >
-        <RedoIcon className="size-4" />
+        <i className="ri-arrow-go-forward-line"></i>
       </Button>
     </div>
   );

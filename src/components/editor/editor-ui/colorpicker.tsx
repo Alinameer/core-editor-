@@ -1,12 +1,13 @@
 import { HexColorPicker } from "react-colorful";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
+import { Button } from "../../../../components/Button";
 
 type Props = {
   disabled?: boolean;
@@ -30,8 +31,13 @@ export default function ColorPicker({
   return (
     <Popover modal={true}>
       <PopoverTrigger asChild disabled={disabled}>
-        <Button size={"sm"} variant={"outline"} className="h-8 w-8" {...rest}>
-          <span className="size-4 rounded-full">{icon}</span>
+        <Button
+          size={"M"}
+          variant={"BlueContStyle"}
+          className="h-8 w-8"
+          {...rest}
+        >
+          <span>{icon}</span>
           {/* <ChevronDownIcon className='size-4'/> */}
         </Button>
       </PopoverTrigger>

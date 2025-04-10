@@ -107,6 +107,15 @@ importers:
       cmdk:
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      glare-themes:
+        specifier: ^1.0.5
+        version: 1.0.5
+      glare-torch-mode:
+        specifier: ^1.0.2
+        version: 1.0.2
+      glare-typography:
+        specifier: ^1.0.4
+        version: 1.0.4
       glob:
         specifier: ^11.0.1
         version: 11.0.1
@@ -140,9 +149,15 @@ importers:
       tailwind-merge:
         specifier: ^3.2.0
         version: 3.2.0
+      tailwind-scrollbar-hide:
+        specifier: ^2.0.0
+        version: 2.0.0(tailwindcss@4.1.3)
       tailwindcss:
         specifier: ^4.1.3
         version: 4.1.3
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.1.3)
       tw-animate-css:
         specifier: ^1.2.5
         version: 1.2.5
@@ -2286,6 +2301,15 @@ packages:
     resolution: {integrity: sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==}
     engines: {node: '>=6'}
 
+  glare-themes@1.0.5:
+    resolution: {integrity: sha512-BHIOwEPxLynapWSbaw2ijsnJVMf2kngsZptYTJ4yJn1L1TFksI443Uf2KiLEA9EbU11m+t1EdbsvhIFu1nZCQA==}
+
+  glare-torch-mode@1.0.2:
+    resolution: {integrity: sha512-YYcrEx2ZRsezYZTkFKRs/JmvuH0iL5W7uxAkGFnA8oP83kl4fs32NCXvAl1AdZGj8PTEwc8kkax3rlywlIsCOw==}
+
+  glare-typography@1.0.4:
+    resolution: {integrity: sha512-ytocoQXZ7HFoGRmEM44BuzVE5ETI3K1T05z7TxFx+rOnOCQ/mVjVUkc8R1hkhd4/vEoSJAEAD3u/cDyjZEJYuA==}
+
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -3071,6 +3095,16 @@ packages:
 
   tailwind-merge@3.2.0:
     resolution: {integrity: sha512-FQT/OVqCD+7edmmJpsgCsY820RTD5AkBryuG5IUqR5YQZSdj5xlH5nLgH7YPths7WsLPSpSBNneJdM8aS8aeFA==}
+
+  tailwind-scrollbar-hide@2.0.0:
+    resolution: {integrity: sha512-lqiIutHliEiODwBRHy4G2+Tcayo2U7+3+4frBmoMETD72qtah+XhOk5XcPzC1nJvXhXUdfl2ajlMhUc2qC6CIg==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 4.0.0 || >= 4.0.0-beta.8 || >= 4.0.0-alpha.20'
+
+  tailwindcss-animate@1.0.7:
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
 
   tailwindcss@4.1.3:
     resolution: {integrity: sha512-2Q+rw9vy1WFXu5cIxlvsabCwhU2qUwodGq03ODhLJ0jW4ek5BUtoCsnLB0qG+m8AHgEsSJcJGDSDe06FXlP74g==}
@@ -5503,6 +5537,12 @@ snapshots:
 
   get-nonce@1.0.1: {}
 
+  glare-themes@1.0.5: {}
+
+  glare-torch-mode@1.0.2: {}
+
+  glare-typography@1.0.4: {}
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -6285,6 +6325,14 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tailwind-merge@3.2.0: {}
+
+  tailwind-scrollbar-hide@2.0.0(tailwindcss@4.1.3):
+    dependencies:
+      tailwindcss: 4.1.3
+
+  tailwindcss-animate@1.0.7(tailwindcss@4.1.3):
+    dependencies:
+      tailwindcss: 4.1.3
 
   tailwindcss@4.1.3: {}
 

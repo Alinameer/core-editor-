@@ -1,12 +1,3 @@
-"use client";
-
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
 import { useMemo, useState, JSX } from "react";
 
 import {
@@ -41,7 +32,7 @@ import { INSERT_FIGMA_COMMAND } from "@/components/editor/plugins/embeds/figma-p
 import { INSERT_TWEET_COMMAND } from "@/components/editor/plugins/embeds/twitter-plugin";
 import { INSERT_YOUTUBE_COMMAND } from "@/components/editor/plugins/embeds/youtube-plugin";
 
-export interface CustomEmbedConfig extends EmbedConfig {
+interface PlaygroundEmbedConfig extends EmbedConfig {
   // Human readable name of the embeded content e.g. Tweet or Google Map.
   contentName: string;
 
@@ -58,7 +49,7 @@ export interface CustomEmbedConfig extends EmbedConfig {
   description?: string;
 }
 
-export const YoutubeEmbedConfig: CustomEmbedConfig = {
+export const YoutubeEmbedConfig: PlaygroundEmbedConfig = {
   contentName: "Youtube Video",
 
   exampleUrl: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
@@ -92,7 +83,7 @@ export const YoutubeEmbedConfig: CustomEmbedConfig = {
   type: "youtube-video",
 };
 
-export const TwitterEmbedConfig: CustomEmbedConfig = {
+export const TwitterEmbedConfig: PlaygroundEmbedConfig = {
   // e.g. Tweet or Google Map.
   contentName: "Tweet",
 
@@ -129,7 +120,7 @@ export const TwitterEmbedConfig: CustomEmbedConfig = {
   type: "tweet",
 };
 
-export const FigmaEmbedConfig: CustomEmbedConfig = {
+export const FigmaEmbedConfig: PlaygroundEmbedConfig = {
   contentName: "Figma Document",
 
   exampleUrl: "https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File",
@@ -182,7 +173,7 @@ export function AutoEmbedDialog({
   embedConfig,
   onClose,
 }: {
-  embedConfig: CustomEmbedConfig;
+  embedConfig: PlaygroundEmbedConfig;
   onClose: () => void;
 }): JSX.Element {
   const [text, setText] = useState("");
@@ -244,14 +235,14 @@ export function AutoEmbedDialog({
 export function AutoEmbedPlugin(): JSX.Element {
   const [modal, showModal] = useEditorModal();
 
-  const openEmbedModal = (embedConfig: CustomEmbedConfig) => {
+  const openEmbedModal = (embedConfig: PlaygroundEmbedConfig) => {
     showModal(`Embed ${embedConfig.contentName}`, (onClose) => (
       <AutoEmbedDialog embedConfig={embedConfig} onClose={onClose} />
     ));
   };
 
   const getMenuOptions = (
-    activeEmbedConfig: CustomEmbedConfig,
+    activeEmbedConfig: PlaygroundEmbedConfig,
     embedFn: () => void,
     dismissFn: () => void
   ) => {
@@ -268,13 +259,18 @@ export function AutoEmbedPlugin(): JSX.Element {
   return (
     <>
       {modal}
-      <LexicalAutoEmbedPlugin<CustomEmbedConfig>
+      <LexicalAutoEmbedPlugin<PlaygroundEmbedConfig>
         embedConfigs={EmbedConfigs}
         onOpenEmbedModalForConfig={openEmbedModal}
         getMenuOptions={getMenuOptions}
         menuRenderFn={(
           anchorElementRef,
-          { options, selectOptionAndCleanUp }
+          {
+            selectedIndex,
+            options,
+            selectOptionAndCleanUp,
+            setHighlightedIndex,
+          }
         ) => {
           return anchorElementRef.current ? (
             <Popover open={true}>
@@ -289,7 +285,7 @@ export function AutoEmbedPlugin(): JSX.Element {
                     <Command>
                       <CommandList>
                         <CommandGroup>
-                          {options.map((option) => (
+                          {options.map((option, i: number) => (
                             <CommandItem
                               key={option.key}
                               value={option.title}

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* this plugin are essential */
+@plugin 'glare-typography';
+@plugin 'glare-themes';
+@plugin 'glare-torch-mode';
+@plugin 'tailwind-scrollbar-hide';
+@plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
