@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
-import { resolve, dirname } from "path";
+import path, { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-import tailwindcss from "tailwindcss";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
@@ -14,33 +14,28 @@ export default defineConfig({
       include: ["src"],
       outDir: "dist",
     }),
+    tailwindcss(),
   ],
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
     },
   },
-  css: {
+  /*   css: {
     postcss: {
       plugins: [tailwindcss()],
     },
-  },
+  }, */
   build: {
+    copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      formats: ["es"],
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "UI KIT",
+      formats: ["es", "umd"],
+      fileName: "index",
     },
-    cssCodeSplit: true,
     rollupOptions: {
-      external: ["react", "react/jsx-runtime", "tailwindcss"],
-      output: {
-        dir: "dist",
-        format: "es",
-        chunkFileNames: "[name]-[hash].js",
-        assetFileNames: "assets/[name][extname]",
-        entryFileNames: "[name].js",
-        inlineDynamicImports: false,
-      },
+      external: ["react", "react-dom", "react/jsx-runtime", "tailwindcss"],
     },
   },
 });
