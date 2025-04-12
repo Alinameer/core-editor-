@@ -127,7 +127,7 @@ import { IMAGE } from "@/components/editor/transformers/markdown-image-transform
 import { TABLE } from "@/components/editor/transformers/markdown-table-transformer";
 import { TWEET } from "@/components/editor/transformers/markdown-tweet-transformer";
 
-export const placeholder = "Press / for commands...";
+export const placeholder = "";
 const maxLength = 500;
 
 export function Plugins({}) {
@@ -201,7 +201,7 @@ export function Plugins({}) {
               <div className="" ref={onRef}>
                 <ContentEditable
                   placeholder={placeholder}
-                  className="ContentEditable__root relative block  overflow-auto min-h-full px-8 py-4 focus:outline-none h-[830px]"
+                  className="ContentEditable__root relative block  overflow-auto min-h-full px-12 py-4 focus:outline-none h-[830px]"
                 />
               </div>
             </div>

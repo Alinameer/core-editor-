@@ -1,8 +1,7 @@
 import { useRef, JSX } from "react";
-import React from "react";
 
 import { DraggableBlockPlugin_EXPERIMENTAL } from "@lexical/react/LexicalDraggableBlockPlugin";
-import { GripVerticalIcon } from "lucide-react";
+import { GripVerticalIcon, Plus } from "lucide-react";
 
 const DRAGGABLE_BLOCK_MENU_CLASSNAME = "draggable-block-menu";
 
@@ -22,6 +21,18 @@ export function DraggableBlockPlugin({
     return null;
   }
 
+  const handleSlashClick = () => {
+    // Get the active editor element
+    const activeElement = document.activeElement;
+    if (activeElement instanceof HTMLElement) {
+      // Focus the element if it's not already focused
+      activeElement.focus();
+
+      // Insert a slash character at the current cursor position
+      document.execCommand("insertText", false, "/");
+    }
+  };
+
   return (
     <DraggableBlockPlugin_EXPERIMENTAL
       anchorElem={anchorElem}
@@ -30,9 +41,18 @@ export function DraggableBlockPlugin({
       menuComponent={
         <div
           ref={menuRef}
-          className="draggable-block-menu absolute left-0 top-0 cursor-grab rounded-sm px-[1px] py-0.5 opacity-0 will-change-transform hover:bg-gray-100 active:cursor-grabbing"
+          className=" test draggable-block-menu absolute left-0 top-0 flex items-center cursor-grab rounded-sm px-[1px] py-0.5 opacity-0 will-change-transform active:cursor-grabbing"
         >
-          <GripVerticalIcon className="size-4 opacity-30" />
+          <button
+            onClick={handleSlashClick}
+            className="ml-1 p-0.5 hover:bg-gray-200 rounded-sm"
+            title="slash command"
+          >
+            <Plus className="size-4 opacity-30" />
+          </button>
+          <button className="p-0.5 hover:bg-gray-200 rounded-sm">
+            <GripVerticalIcon className="size-4 opacity-30" />
+          </button>
         </div>
       }
       targetLineComponent={
