@@ -4,6 +4,7 @@ import { $isCodeHighlightNode } from "@lexical/code";
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { mergeRegister } from "@lexical/utils";
+
 import {
   $getSelection,
   $isParagraphNode,
@@ -14,16 +15,7 @@ import {
   LexicalEditor,
   SELECTION_CHANGE_COMMAND,
 } from "lexical";
-import {
-  BoldIcon,
-  ItalicIcon,
-  StrikethroughIcon,
-  UnderlineIcon,
-  CodeIcon,
-  LinkIcon,
-  SubscriptIcon,
-  SuperscriptIcon,
-} from "lucide-react";
+import { SubscriptIcon, SuperscriptIcon } from "lucide-react";
 import { createPortal } from "react-dom";
 
 import { Separator } from "@/components/ui/separator";
@@ -34,7 +26,7 @@ import { getDOMRangeRect } from "@/components/editor/utils/get-dom-range-rect";
 import { getSelectedNode } from "@/components/editor/utils/get-selected-node";
 import { setFloatingElemPosition } from "@/components/editor/utils/set-floating-elem-position";
 
-function FloatingTextFormat({
+function TextFormatFloatingToolbar({
   editor,
   anchorElem,
   isLink,
@@ -88,7 +80,9 @@ function FloatingTextFormat({
       }
     }
   }
-  function mouseUpListener() {
+
+  // @ts-ignore
+  function mouseUpListener(e: MouseEvent) {
     if (popupCharStylesEditorRef?.current) {
       if (popupCharStylesEditorRef.current.style.pointerEvents !== "auto") {
         popupCharStylesEditorRef.current.style.pointerEvents = "auto";
@@ -209,7 +203,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <BoldIcon className="h-4 w-4" />
+              <i className="ri-bold"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="italic"
@@ -219,7 +213,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <ItalicIcon className="h-4 w-4" />
+              <i className="ri-italic"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="underline"
@@ -229,7 +223,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <UnderlineIcon className="h-4 w-4" />
+              <i className="ri-underline"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="strikethrough"
@@ -239,7 +233,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <StrikethroughIcon className="h-4 w-4" />
+              <i className="ri-strikethrough"></i>
             </ToggleGroupItem>
             <Separator orientation="vertical" />
             <ToggleGroupItem
@@ -250,7 +244,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <CodeIcon className="h-4 w-4" />
+              <i className="ri-code-line"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="link"
@@ -258,7 +252,7 @@ function FloatingTextFormat({
               onClick={insertLink}
               size="sm"
             >
-              <LinkIcon className="h-4 w-4" />
+              <i className="ri-link"></i>
             </ToggleGroupItem>
             <Separator orientation="vertical" />
           </ToggleGroup>
@@ -395,7 +389,7 @@ function useFloatingTextFormatToolbar(
   }
 
   return createPortal(
-    <FloatingTextFormat
+    <TextFormatFloatingToolbar
       editor={editor}
       anchorElem={anchorElem}
       isLink={isLink}
