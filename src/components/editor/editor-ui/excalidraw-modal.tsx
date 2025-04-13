@@ -21,6 +21,7 @@ import { DialogTrigger } from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
 
+// @ts-ignore
 const Excalidraw = dynamic(() => import("./excalidraw"), { ssr: false });
 
 export type ExcalidrawInitialElements = ExcalidrawInitialDataState["elements"];

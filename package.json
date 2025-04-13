@@ -1,7 +1,7 @@
 {
   "name": "docs_editor_test",
   "private": false,
-  "version": "1.0.5",
+  "version": "1.0.9",
   "type": "module",
   "main": "index.js",
   "files": [

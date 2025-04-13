@@ -128,7 +128,7 @@ import { TABLE } from "@/components/editor/transformers/markdown-table-transform
 import { TWEET } from "@/components/editor/transformers/markdown-tweet-transformer";
 
 export const placeholder = "";
-const maxLength = 500;
+const maxLength = 50000000000;
 
 export function Plugins({}) {
   const [floatingAnchorElem, setFloatingAnchorElem] =
